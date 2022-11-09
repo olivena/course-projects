@@ -8,7 +8,7 @@ delete words from documents and read the documents.
 - java 
 - in S/2020
 
-### Games -project
+### Games
 
 A program to add and get game statistics
 - c++ 
