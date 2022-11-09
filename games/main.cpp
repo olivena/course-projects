@@ -1,7 +1,4 @@
 /*  COMP.CS.100 Project 2: GAME STATISTICS
- * ===============================
- * EXAMPLE SOLUTION
- * ===============================
  *
  *  Acts as a game statistics with n commands:
  * ALL_GAMES - Prints all known game names
@@ -34,9 +31,7 @@
  *
  * Program author:
  * Name: Olivia Takkinen
- * Student Number: 39543194
- * UserID: gcolta
- * E-mail: olivia.takkinen@tuni.fi
+ * E-mail: olivia.takkinen@gmail.com
  *
  * The full version of the program.
  * */
