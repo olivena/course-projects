@@ -1,5 +1,5 @@
 # Course projects
 
-## Games -project
+### Games -project
 
 A program to add and get game statistics
