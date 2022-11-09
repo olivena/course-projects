@@ -3,3 +3,4 @@
 ### Games -project
 
 A program to add and get game statistics
+Made with C++
