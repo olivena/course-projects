@@ -2,8 +2,25 @@ let gameState = {
     cards: [],
     score: 0,
     attempts: 0,
-    gameOver: false
+    gameOver: false,
+    flipBackTimer: null
 };
+
+// Tab switching
+function switchTab(tab) {
+    // Hide all tabs
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    
+    // Show selected tab
+    document.getElementById(tab + 'Tab').classList.add('active');
+    event.target.classList.add('active');
+    
+    // Load leaderboard if switching to it
+    if (tab === 'leaderboard') {
+        loadLeaderboard();
+    }
+}
 
 // Initialize the game
 async function initGame() {
@@ -14,6 +31,7 @@ async function initGame() {
     gameState = { ...data, gameOver: false };
     renderBoard();
     updateStats();
+    loadLeaderboard();
 }
 
 // Render the game board
@@ -27,10 +45,10 @@ function renderBoard() {
         
         if (card.matched) {
             cardEl.classList.add('matched');
-            cardEl.textContent = card.identifier;
+            cardEl.textContent = card.emoji;
         } else if (card.flipped) {
             cardEl.classList.add('flipped');
-            cardEl.textContent = card.identifier;
+            cardEl.textContent = card.emoji;
         }
         
         cardEl.onclick = () => flipCard(index);
@@ -43,6 +61,12 @@ async function flipCard(cardId) {
     // Disable clicking during comparison
     if (gameState.cards[cardId].matched || gameState.cards[cardId].flipped) {
         return;
+    }
+    
+    // Clear any pending flip-back timer (new turn started)
+    if (gameState.flipBackTimer) {
+        clearTimeout(gameState.flipBackTimer);
+        gameState.flipBackTimer = null;
     }
     
     const response = await fetch('/api/game/flip', {
@@ -67,26 +91,51 @@ async function flipCard(cardId) {
     updateStats();
     
     if (data.action === 'compare') {
-        // Disable board during flip back
-        const board = document.getElementById('gameBoard');
-        board.style.pointerEvents = 'none';
-        
-        setTimeout(() => {
-            if (!data.matched) {
-                // Flip cards back if not matched
-                const firstCard = data.cards.find((c, idx) => {
-                    return gameState.cards[idx].flipped && !c.matched;
+        if (!data.matched) {
+            // No match - set 30 second timer to flip back
+            gameState.flipBackTimer = setTimeout(() => {
+                // Flip cards back after 30 seconds
+                gameState.cards = gameState.cards.map(card => {
+                    if (!card.matched) {
+                        card.flipped = false;
+                    }
+                    return card;
                 });
                 renderBoard();
-            }
-            board.style.pointerEvents = 'auto';
-            
-            // Check if game over
+                gameState.flipBackTimer = null;
+            }, 15000); // 15 seconds
+        } else {
+            // Match found - check if game over
             if (gameState.gameOver) {
                 showGameOverModal();
             }
-        }, 800);
+        }
     }
+}
+
+// Load leaderboard
+async function loadLeaderboard() {
+    const response = await fetch('/api/scores/get');
+    const data = await response.json();
+    const scores = data.scores.slice(0, 10); // Show only top 10
+    
+    const tbody = document.getElementById('scoresBody');
+    tbody.innerHTML = '';
+    
+    if (scores.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="3" class="empty-leaderboard">No scores yet. Play to be on the leaderboard!</td></tr>';
+        return;
+    }
+    
+    scores.forEach((score, index) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${index + 1}</td>
+            <td>${score.name}</td>
+            <td>${score.score}</td>
+        `;
+        tbody.appendChild(row);
+    });
 }
 
 // Update stats display
@@ -99,11 +148,36 @@ function updateStats() {
 function showGameOverModal() {
     document.getElementById('finalScore').textContent = gameState.score;
     document.getElementById('finalAttempts').textContent = gameState.attempts;
+    document.getElementById('playerName').value = '';
     document.getElementById('gameOverModal').classList.remove('hidden');
 }
 
-// Restart game
-async function restartGame() {
+// Submit score to leaderboard
+async function submitScore() {
+    const name = document.getElementById('playerName').value || 'Anonymous';
+    
+    const response = await fetch('/api/scores/save', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            name: name,
+            score: gameState.score,
+            attempts: gameState.attempts
+        })
+    });
+    const data = await response.json();
+    
+    if (data.success) {
+        // Show success and play again
+        alert('Score saved!');
+        playAgain();
+    }
+}
+
+// Play again
+async function playAgain() {
     document.getElementById('gameOverModal').classList.add('hidden');
     await initGame();
 }

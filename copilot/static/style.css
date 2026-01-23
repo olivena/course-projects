@@ -1,11 +1,13 @@
 :root {
-    --primary-color: #4CAF50;
+    --primary-color: #FF8C00;
     --secondary-color: #2196F3;
     --danger-color: #f44336;
     --gray: #ccc;
     --dark-gray: #666;
     --white: #fff;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Righteous&display=swap');
 
 * {
     margin: 0;
@@ -15,7 +17,13 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: repeating-linear-gradient(
+        90deg,
+        #FF0000 0px,
+        #FF0000 40px,
+        #FFFFFF 40px,
+        #FFFFFF 80px
+    );
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -26,24 +34,54 @@ body {
 .container {
     background: white;
     border-radius: 15px;
-    padding: 30px;
+    padding: 20px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-    max-width: 600px;
+    max-width: 700px;
     width: 100%;
+}
+
+.main-container {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    max-width: 1400px;
+    width: 100%;
+}
+
+.content-wrapper {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.game-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.leaderboard-section {
+    display: flex;
+    flex-direction: column;
 }
 
 h1 {
     text-align: center;
-    color: #333;
-    margin-bottom: 20px;
-    font-size: 32px;
+    color: #FF1493;
+    margin-bottom: 10px;
+    font-size: 36px;
+    font-family: 'Righteous', cursive;
+    text-shadow: 4px 4px 0px #FFD700, 8px 8px 0px rgba(0, 0, 0, 0.3);
+    letter-spacing: 3px;
+    transform: skewY(-5deg);
 }
 
 .info {
     display: flex;
     justify-content: space-around;
-    margin-bottom: 30px;
-    padding: 20px;
+    margin-bottom: 15px;
+    padding: 12px;
     background: #f5f5f5;
     border-radius: 10px;
 }
@@ -57,21 +95,24 @@ h1 {
     font-weight: bold;
     color: #333;
     margin-bottom: 5px;
+    font-family: 'Righteous', cursive;
+    font-size: 14px;
 }
 
 .stat span {
     display: block;
-    font-size: 24px;
+    font-size: 18px;
     color: var(--primary-color);
     font-weight: bold;
+    font-family: 'Arial', sans-serif;
 }
 
 .game-board {
     display: grid;
     grid-template-columns: repeat(8, 1fr);
-    gap: 8px;
-    margin-bottom: 20px;
-    padding: 10px;
+    gap: 3px;
+    margin-bottom: 15px;
+    padding: 4px;
     background: #f9f9f9;
     border-radius: 10px;
 }
@@ -80,29 +121,37 @@ h1 {
     aspect-ratio: 1;
     border: 2px solid #333;
     border-radius: 8px;
-    background: var(--gray);
+    background: linear-gradient(135deg, #FFD700 0%, #FF1493 100%);
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 24px;
+    font-size: 44px;
     font-weight: bold;
     transition: all 0.3s ease;
     user-select: none;
+    overflow: hidden;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
 }
 
 .card:hover:not(.matched):not(.flipped) {
     transform: scale(1.05);
-    background: #999;
+    background: linear-gradient(135deg, #FFED4E 0%, #FF69B4 100%);
 }
 
 .card.flipped {
-    background: var(--primary-color);
+    background: #FFFACD;
     color: white;
 }
 
 .card.matched {
-    background: var(--secondary-color);
+    background: #D0F4E0;
     color: white;
     cursor: default;
 }
@@ -164,8 +213,148 @@ h1 {
     background: #45a049;
 }
 
+.modal-content button.btn-secondary {
+    background: var(--secondary-color);
+    margin-top: 10px;
+}
+
+.modal-content button.btn-secondary:hover {
+    background: #0b7dda;
+}
+
+.name-input-group {
+    margin: 20px 0;
+}
+
+.name-input-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: bold;
+}
+
+.name-input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.name-input-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.tab-buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #ddd;
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    color: #666;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.tab-btn.active {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+}
+
+.tab-btn:hover {
+    color: var(--primary-color);
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.leaderboard {
+    background: #f9f9f9;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.leaderboard h2 {
+    margin-bottom: 15px;
+    color: #333;
+    font-size: 20px;
+    font-family: 'Righteous', cursive;
+}
+
+#scoresTable {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+#scoresTable thead {
+    background: var(--primary-color);
+    color: white;
+}
+
+#scoresTable th {
+    padding: 8px;
+    text-align: left;
+    font-weight: bold;
+}
+
+#scoresTable th:nth-child(1) {
+    width: 30%;
+}
+
+#scoresTable th:nth-child(2) {
+    width: auto;
+}
+
+#scoresTable th:nth-child(3) {
+    width: 30%;
+}
+
+#scoresTable td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+#scoresTable tbody tr:nth-child(odd) {
+    background: white;
+}
+
+#scoresTable tbody tr:nth-child(even) {
+    background: #f5f5f5;
+}
+
+#scoresTable tbody tr:hover {
+    background: #efefef;
+}
+
+.empty-leaderboard {
+    text-align: center;
+    color: #999;
+    padding: 40px 20px;
+}
+
+@media (max-width: 1200px) {
+    .content-wrapper {
+        grid-template-columns: 1fr;
+    }
+}
+
 @media (max-width: 600px) {
-    .container {
+    .main-container {
         padding: 15px;
     }
 
@@ -181,3 +370,4 @@ h1 {
         font-size: 18px;
     }
 }
+
