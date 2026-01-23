@@ -6,6 +6,7 @@ A memory game programmed fully with GitHub Copilot. Made as an excercise in cour
 - Python app, working in browser
 - Made in winter 2026
 - GitHub Copilot: prompting, editing with Agent
+- Flask library
 
 ### Hitori
 
