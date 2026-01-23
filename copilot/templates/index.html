@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Game</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Memory Game</h1>
+        
+        <div class="info">
+            <div class="stat">
+                <label>Score:</label>
+                <span id="score">0</span>
+            </div>
+            <div class="stat">
+                <label>Attempts:</label>
+                <span id="attempts">0</span>
+            </div>
+        </div>
+        
+        <div class="game-board" id="gameBoard"></div>
+        
+        <div id="gameOverModal" class="modal hidden">
+            <div class="modal-content">
+                <h2>Game Over!</h2>
+                <p>Final Score: <span id="finalScore">0</span></p>
+                <p>Attempts: <span id="finalAttempts">0</span></p>
+                <button onclick="restartGame()">Play Again</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
