@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Game</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="main-container">
+        <h1>Memory Game</h1>
+        
+        <div class="content-wrapper">
+            <!-- Left side: Game -->
+            <div class="game-section">
+                <div class="game-board" id="gameBoard"></div>
+            </div>
+            
+            <!-- Right side: Stats and Leaderboard -->
+            <div class="leaderboard-section">
+                <div class="info">
+                    <div class="stat">
+                        <label>Score:</label>
+                        <span id="score">0</span>
+                    </div>
+                    <div class="stat">
+                        <label>Attempts:</label>
+                        <span id="attempts">0</span>
+                    </div>
+                </div>
+                
+                <div class="leaderboard">
+                    <h2>Top Scores</h2>
+                    <table id="scoresTable">
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Name</th>
+                                <th>Score</th>
+                            </tr>
+                        </thead>
+                        <tbody id="scoresBody">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <div id="gameOverModal" class="modal hidden">
+            <div class="modal-content">
+                <h2>Game Over!</h2>
+                <p>Final Score: <span id="finalScore">0</span></p>
+                <p>Attempts: <span id="finalAttempts">0</span></p>
+                
+                <div class="name-input-group">
+                    <label for="playerName">Enter your name:</label>
+                    <input type="text" id="playerName" placeholder="Your name" maxlength="20">
+                    <button onclick="submitScore()">Save Score</button>
+                </div>
+                
+                <button class="btn-secondary" onclick="playAgain()">Play Again</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
