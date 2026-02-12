@@ -1,0 +1,9 @@
+// Here, you should provide a link to your running demo (screencast) of your 
+// implementation. It can be a link to any online video-sharing platform. 
+// Just remember to make it publicly accessible so we can open and review 
+// your demo.
+
+
+Link: https://tuni-my.sharepoint.com/:v:/g/personal/olivia_takkinen_tuni_fi/IQAHQ69m_GRxS5o6WVSpnqlXAV-m9vdrHGscDcPgi5JPjrQ?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=zczEjH
+
+Video is accessible for the course's teaching assistants that were informed in course moodle page.
