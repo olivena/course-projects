@@ -1,35 +1,37 @@
-# Course projects
-### Copilot
+[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/aCO7wZ89)
+# Coursework Ⅱ
 
-A memory game programmed fully with GitHub Copilot. Made as an excercise in course, but continued developing it further to have more details. 
+This is the template repository for Coursework Ⅱ. You should clone and use this template to create your own project. Once completed, push it to the GitHub classroom for review and grading.
 
-- Python app, working in browser
-- Made in winter 2026
-- GitHub Copilot: prompting, editing with Agent
-- Flask library
+## Student Information
 
-### Secure Programming - A forum website 
-- Made in collaboration with Mikko Tuominen
-- Can be found at: https://github.com/tuo-mikko/secure-react-app
-- Focus was on creating a secure website with user in mind
-- Technologies such as: TypeScript, React, MongoDB
+First name: Olivia
 
-### Hitori
+Last name: Takkinen
 
-A number game
-- c++
-- in S/2022
+Student Number: K439866
 
-### Oope2-harjoitustyo
 
-sorts files based on their type in jokes and news -kategories. 
-The user can also find files based on specific words, add and delete documents, 
-delete words from documents and read the documents.
-- java 
-- in S/2020
+## Assignment Details
+**Q:** Which assignment you have chosen to implement? 
+**A:** Ace of SPADE
 
-### Games
 
-A program to add and get game statistics
-- c++ 
-- in S/2021
+## Steps to complete the assignment
+
+1. First read the instruction and paper provided in the assignment file.
+2. Write a report along with the TODO list for the assignment [here](./Report.md).
+3. Implement and put the code and dataset of the chosen assignment [here](./Code/).
+4. Record a screencast showcasing the process of running your code and reproducing the results. A public available link to your video file should be store [here](./Link.txt).
+5. Put the result and final conclusion in the [report](./Report.md) file, and push everything on GitHub.
+
+## Step-by-Step Instruction to run the code
+Please put a step-by-step instruction of how to run your code.
+
+1. run py aos.py
+2. give program the wanted parameter set
+3. give file to encrypt, there is an example file named example.txt
+4. give file to decrypt, there is an example file named ciphertext.bin
+
+I used Python version 3.13.7, the program uses Crypto -library which might need own installation with:
+>pip install pycryptodome
