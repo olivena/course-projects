@@ -8,6 +8,12 @@ A memory game programmed fully with GitHub Copilot. Made as an excercise in cour
 - GitHub Copilot: prompting, editing with Agent
 - Flask library
 
+### Secure Programming - A forum website 
+- Made in collaboration with Mikko Tuominen
+- Can be found at: https://github.com/tuo-mikko/secure-react-app
+- Focus was on creating a secure website with user in mind
+- Technologies such as: TypeScript, React, MongoDB
+
 ### Hitori
 
 A number game
