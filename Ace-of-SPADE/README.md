@@ -1,21 +1,6 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/aCO7wZ89)
-# Coursework Ⅱ
-
-This is the template repository for Coursework Ⅱ. You should clone and use this template to create your own project. Once completed, push it to the GitHub classroom for review and grading.
-
-## Student Information
-
-First name: Olivia
-
-Last name: Takkinen
-
-Student Number: K439866
-
-
+# Coursework 
 ## Assignment Details
-**Q:** Which assignment you have chosen to implement? 
-**A:** Ace of SPADE
-
+Ace of SPADE
 
 ## Steps to complete the assignment
 
@@ -34,4 +19,5 @@ Please put a step-by-step instruction of how to run your code.
 4. give file to decrypt, there is an example file named ciphertext.bin
 
 I used Python version 3.13.7, the program uses Crypto -library which might need own installation with:
+
 >pip install pycryptodome
