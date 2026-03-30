@@ -16,10 +16,10 @@ A memory game programmed fully with GitHub Copilot. Made as an excercise in cour
 - Flask library
 
 ### Secure Programming - A forum website 
-- Made in collaboration with Mikko Tuominen
+- Made in collaboration with Mikko Tuominen, I was responsible of front-end, Mikko of backend
 - Can be found at: https://github.com/tuo-mikko/secure-react-app
 - Focus was on creating a secure website with user in mind
-- Technologies such as: TypeScript, React, MongoDB
+- I used technologies such as: TypeScript, React, MongoDB
 - made in spring 2025
 
 ### Hitori
